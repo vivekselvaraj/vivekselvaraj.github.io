@@ -85,10 +85,20 @@ p {
 a {
     text-decoration: none;
     color: cornflowerblue;
+    padding-bottom: 2px;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    border-style: solid;
+    border-color: cornflowerblue;
+    border-width: 0 0 1px 0;
+}
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(120, 120, 120, 0.6);
 }
 
 .description {
@@ -111,7 +121,7 @@ a:hover {
 }
 
 .item-list a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .item-list h1 {
