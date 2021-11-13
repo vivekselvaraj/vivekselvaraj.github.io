@@ -1,0 +1,47 @@
+/**
+The default theme for JET is based on Oracle's Redwood Design System.  
+Theming is provided via CSS Variables. A Theme Builder application to help build custom themes is available from the Learning/Dive-in page of the JET website.
+**/
+
+@import url('//static.oracle.com/cdn/jet/11.1.0/default/css/redwood/oj-redwood.css');
+
+:root {
+  --redwood-green-color: rgb(87, 115, 70); 
+  --redwood-highlight-green-color: rgb(229, 244, 220); 
+  --redwood-green-alpha-color: rgba(87, 115, 70, 0.61); 
+}
+
+body {
+  padding-top: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+oj-menu {
+  border-radius: 10px !important;
+}
+
+.edit {
+  display: none;
+}
+
+/* .list-item:hover .edit {
+  display: block;
+} */
+
+.list-item:hover {
+  background-color: var(--redwood-highlight-green-color);
+}
+
+.menuIcon {
+  margin-right: 15px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  text-decoration-style: wavy;
+  -moz-text-decoration-style: wavy;
+  text-decoration-color: var(--redwood-green-alpha-color);
+  -moz-text-decoration-color: var(--redwood-green-alpha-color);
+}

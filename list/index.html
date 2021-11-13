@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>List</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script data-main="main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <div style="display: flex; align-items: center;">
+      <h1>List</h1>
+      <oj-button id="newTaskButton" on-oj-action='[[newTaskDialogOpenAction]]' style="margin-left: 30px; ">
+        New
+      </oj-button>
+      <div style="display:none; margin-left: auto; color: rgb(184, 0, 0);">
+        <span>Trash</span>
+      </div>
+    </div>
+
+    <br />
+    <br />
+
+    <oj-tab-bar id="navlist" edge="top" selection="{{selectedTab}}" class="oj-divider-bottom" on-selection-changed="{{tabListener}}">
+      <ul>
+        <li id="pending">
+          <a href="#" aria-controls="pending-tab-panel" id="pending-tab">
+            Pending
+          </a>
+        </li>
+        <li id="completed">
+          <a href="#" aria-controls="blogs-tab-panel" id="completed-tab">
+            Done
+          </a>
+        </li>
+      </ul>
+    </oj-tab-bar>
+    <oj-switcher value="[[selectedTab]]">
+      <div slot="pending">
+        <oj-list-view id="pendingListView" aria-label="pending list" data="[[pendingDP]]"
+          class="oj-listview-item-padding-off" selection-mode="none" gridlines.item='visibleExceptLast'>
+          <oj-menu slot="contextMenu" aria-label="actions" on-oj-menu-action="[[myActionFunction]]"
+            on-oj-before-open="[[myBeforeOpenFunction]]">
+            <oj-option id="menuComplete" value="complete"><span aria-hidden="true" class="menuIcon">🥳</span>Done</oj-option>
+            <oj-option id="menuDelete" value="delete"><span aria-hidden="true" class="menuIcon">🗑</span><span style="color: rgb(184, 0, 0);">Delete</span></oj-option>
+          </oj-menu>
+          <template slot="noData">
+            <div class="oj-flex oj-sm-align-items-center oj-sm-flex-direction-column oj-sm-width-full">
+              <span style="margin-top: 50px">🥳</span>
+              <span class="oj-sm-padding-2x">All caught up. No pending tasks.</span>
+            </div>
+          </template>
+          <template slot="itemTemplate" data-oj-as="item">
+            <oj-list-item-layout class='list-item' on-click="[[onClickEventListener]]">
+              <div style="display: flex;">
+
+                <div style="display: flex; flex-direction: column;">
+                  <span class="oj-typography-body-md oj-text-color-primary">
+                    <oj-bind-text value="[[item.data.title]]"></oj-bind-text>
+                  </span>
+                  <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
+                    <oj-bind-text value="[[DATE_FORMATTER.format(Date.parse(item.data.date))]]"></oj-bind-text>
+                  </span>
+                </div>
+
+                <!-- <div role="button" style="margin-left: auto; margin-right: auto; text-align: center;">
+                  Complete
+                </div> -->
+              </div>
+              <div slot="trailing" on-click="[[reorderListener]]" role="button" tabindex="0" class="oj-flex-item oj-listview-drag-handle"></div>
+              <div style="display: none;">
+                <oj-button class='edit'><span>Edit</span></oj-button>
+                <div role="button"  tabindex="0" class="oj-flex-item oj-listview-drag-handle">
+                </div>
+              </div>
+
+            </oj-list-item-layout>
+          </template>
+        </oj-list-view>
+      </div>
+      <div slot="completed">
+        <oj-list-view id="completedListView" aria-label="completed list" data="[[completedDP]]"
+          class="oj-listview-item-padding-off" gridlines.item='visibleExceptLast'>
+          <oj-menu slot="contextMenu" aria-label="done context menu" on-oj-menu-action="[[myActionFunction]]"
+            on-oj-before-open="[[myBeforeOpenFunction]]">
+            <oj-option id="menuNotDone" value="notdone"><span aria-hidden="true" class="menuIcon">♻️</span>Not Done?</oj-option>
+            <oj-option id="menuDelete" value="delete"><span aria-hidden="true" class="menuIcon">🗑</span><span style="color: rgb(184, 0, 0);">Delete</span></oj-option>
+          </oj-menu>
+          <template slot="noData">
+            <div class="oj-flex oj-sm-align-items-center oj-sm-flex-direction-column oj-sm-width-full">
+              <span style="margin-top: 50px">👏</span>
+              <span class="oj-sm-padding-2x">Come on. You can do it.</span>
+            </div>
+          </template>
+          <template slot="itemTemplate" data-oj-as="item">
+            <oj-list-item-layout class='list-item' on-click="[[onClickEventListener]]">
+              <div style="display: flex;">
+                <div style="display: flex; flex-direction: column;">
+                  <span class="oj-typography-body-md oj-text-color-primary strikethrough">
+                    <oj-bind-text value="[[item.data.title]]"></oj-bind-text>
+                  </span>
+                  <span slot="secondary" class="oj-typography-body-sm oj-text-color-secondary">
+                    <oj-bind-text value="[[DATE_FORMATTER.format(Date.parse(item.data.date))]]"></oj-bind-text>
+                  </span>
+                </div>
+              </div>
+              <div slot="trailing" on-click="[[reorderListener]]" role="button" tabindex="0" class="oj-flex-item oj-listview-drag-handle"></div>
+              <div style="display: none;">
+                <div role="button"  tabindex="0" class="oj-flex-item oj-listview-drag-handle">
+                </div>
+              </div>
+
+            </oj-list-item-layout>
+          </template>
+        </oj-list-view>
+      </div>
+    </oj-switcher>
+
+    <oj-dialog id="newTaskDialog" dialog-title="New Task" cancel-behavior="icon">
+      <div slot="body">
+        <oj-input-text id="newTaskNameInputText" value="{{newTaskName}}" label-hint="Task Name"></oj-input-text>
+      </div>
+      <div slot="footer">
+        <oj-button id="createActionButton" on-oj-action="[[newTaskButtonAction]]">Add
+        </oj-button>
+      </div>
+    </oj-dialog>
+
+
+  </div>
+</body>
+
+</html>
