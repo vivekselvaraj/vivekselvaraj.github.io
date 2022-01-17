@@ -101,6 +101,20 @@ hr {
     border-top: 1px solid rgba(120, 120, 120, 0.6);
 }
 
+img {
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+ol, ul {
+    padding-inline-start: 40px;
+}
+
+ul, ol > li {
+    margin-bottom: 10px;
+}
+
 .description {
     margin-bottom: 40px;
 }
@@ -169,6 +183,10 @@ hr {
     font-size: 1.4em;
     margin-right: 10px;
     padding: 6px 10px;
+}
+
+.port-h2 {
+    margin-top: 40px;
 }
 
 footer {
@@ -344,6 +362,11 @@ footer {
 @media(max-width: 600px) {
     .wrapper {
         padding: 40px 20px;
+    }
+
+    img {
+        padding: 0px;
+        margin: 10px 0px;
     }
 }
 
