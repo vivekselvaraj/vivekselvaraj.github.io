@@ -69,7 +69,7 @@ h1 {
 
 h2 {
     font-weight: normal;
-    margin: 20px 0;
+    margin: 40px 0 20px 0;
 }
 
 h3 {
@@ -103,6 +103,7 @@ hr {
 
 img {
     width: 100%;
+    max-width: 100%;
     margin: 20px 0;
     padding: 10px;
 }
@@ -117,6 +118,10 @@ ul, ol > li {
 
 .description {
     margin-bottom: 40px;
+}
+
+.item-list {
+    padding-inline-start: 0;
 }
 
 .item-list > li {
@@ -194,6 +199,22 @@ footer {
     padding-bottom: 5px;
     font-size: small;
     color: #8a8a8a;
+}
+
+.has-label {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.image-label {
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    padding-top: 5px;
+}
+
+.h3-small {
+
 }
 
 .highlight .hll { background-color: #ffffcc }
