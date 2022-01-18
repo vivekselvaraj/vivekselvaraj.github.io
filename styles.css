@@ -69,7 +69,7 @@ h1 {
 
 h2 {
     font-weight: normal;
-    margin: 20px 0;
+    margin: 40px 0 20px 0;
 }
 
 h3 {
@@ -101,8 +101,27 @@ hr {
     border-top: 1px solid rgba(120, 120, 120, 0.6);
 }
 
+img {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+ol, ul {
+    padding-inline-start: 40px;
+}
+
+ul, ol > li {
+    margin-bottom: 10px;
+}
+
 .description {
     margin-bottom: 40px;
+}
+
+.item-list {
+    padding-inline-start: 0;
 }
 
 .item-list > li {
@@ -171,11 +190,31 @@ hr {
     padding: 6px 10px;
 }
 
+.port-h2 {
+    margin-top: 40px;
+}
+
 footer {
     padding-top: 20px;
     padding-bottom: 5px;
     font-size: small;
     color: #8a8a8a;
+}
+
+.has-label {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.image-label {
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    padding-top: 5px;
+}
+
+.h3-small {
+
 }
 
 .highlight .hll { background-color: #ffffcc }
@@ -344,6 +383,11 @@ footer {
 @media(max-width: 600px) {
     .wrapper {
         padding: 40px 20px;
+    }
+
+    img {
+        padding: 0px;
+        margin: 10px 0px;
     }
 }
 
