@@ -1,3 +1,4 @@
+
 /**
 *  Vannam Theme
 *  Copyright (c) Vivek Selvaraj 2020
@@ -198,7 +199,7 @@ footer {
     padding-top: 20px;
     padding-bottom: 5px;
     font-size: small;
-    color: #8a8a8a;
+    color: #737373;
 }
 
 .has-label {
@@ -215,6 +216,36 @@ footer {
 
 .h3-small {
 
+}
+
+.color-card-container {
+    display: flex;
+    margin: 50px 0;
+    justify-content: space-around;
+}
+
+.card-border {
+    border-radius: 2px;
+    background-color: white;
+    border: 2px solid #737373;
+    height: 250px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+    border-radius: 15px;
+}
+
+.color-card {
+    border: 2px solid #737373; 
+    border-radius: 5px;
+    height: 100%; 
+    width: 100%;
+}
+
+.color-code {
+    margin: 10px 0;
 }
 
 .highlight .hll { background-color: #ffffcc }
@@ -298,6 +329,10 @@ footer {
 
     header {
         background-color: #000;
+    }
+
+    footer {
+        color: #8f8f8f;
     }
     
     .highlight .hll { background-color: #404040 }
