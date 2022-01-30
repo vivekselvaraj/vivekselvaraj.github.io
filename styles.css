@@ -433,6 +433,10 @@ footer {
         padding: 0px;
         margin: 10px 0px;
     }
+
+    .card-border {
+        height: 150px;
+    }
 }
 
 
