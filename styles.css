@@ -75,7 +75,7 @@ h2 {
 
 h3 {
     font-weight: normal;
-    margin: 20px 0;
+    margin: 30px 0 10px 0;
 }
 
 p {
@@ -225,9 +225,9 @@ footer {
 }
 
 .card-border {
-    border-radius: 2px;
-    background-color: white;
+    background-color: #e3e3e3;
     border: 2px solid #737373;
+    border: none;
     height: 250px;
     width: 40%;
     display: flex;
@@ -239,6 +239,7 @@ footer {
 
 .color-card {
     border: 2px solid #737373; 
+    border: none;
     border-radius: 5px;
     height: 100%; 
     width: 100%;
@@ -333,6 +334,14 @@ footer {
 
     footer {
         color: #8f8f8f;
+    }
+
+    .card-border {
+        border: none;
+        background-color: #4c4c4c;
+    }
+    .color-card {
+        border: none;
     }
     
     .highlight .hll { background-color: #404040 }
