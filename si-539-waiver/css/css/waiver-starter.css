@@ -1,0 +1,62 @@
+/* DO NOT TOUCH MODIFY THIS CODE*/
+body{
+    margin:0;
+    padding:0;
+    background-color: lightgray;
+}
+
+header{
+    background-color: white;
+}
+header img{
+    border: inherit;   
+}
+
+.container{
+    border: 4px solid black;
+}
+
+figure{
+    border: 2px solid darkgrey;
+    margin:0;
+    background-color: white;
+    padding: 5px;
+}
+figcaption{
+    background-color: white;
+    font-size: 1.5em;
+    font-family: Times;
+}
+img {
+    box-sizing: border-box;
+    border-bottom: 5px solid blue;
+}
+footer{
+    background-color:black;
+    color: white;
+    text-align:center;
+    border-top:10px dashed white;
+}
+
+/* STUDY THESE LINES CAREFULLY */
+.jump{
+    border: 2px solid black;
+    padding:25px;
+    background-color: white;
+
+    position:absolute;
+    top:-150px;
+}
+
+h1{
+    text-align: center;
+    line-height:2em;
+    color:black;
+    border: 1px solid black;;
+}
+
+.one-third{
+    display:inline-block;
+    width:30%
+}
+/* DO NOT MODIFY THIS FILE.  Make your own. */
