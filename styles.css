@@ -1,9 +1,14 @@
-
 /**
 *  Vannam Theme
 *  Copyright (c) Vivek Selvaraj 2020
 *
 */
+
+:root {
+    --color-text-primary: #555;
+    --color-background-light: #faf9f6;
+    --border-radius-regular: 3px;
+}
 
 * {
     margin: 0;
@@ -12,16 +17,16 @@
 }
 
 body {
-    background: #fcf9f8;
-    color: #555;
+    background: var(--color-background-light);
+    color: var(--color-text-primary);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     font-weight: normal;
     text-align: center;
-    line-height: 1.4em;
+    line-height: 1.5em;
 }
 
 .wrapper {
-    max-width: 720px;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     padding: 100px 40px 40px 40px;
@@ -70,17 +75,25 @@ h1 {
 
 h2 {
     font-weight: normal;
-    margin: 40px 0 20px 0;
+    margin: 20px 0;
 }
 
 h3 {
     font-weight: normal;
-    margin: 30px 0 10px 0;
+    margin: 20px 0;
 }
 
 p {
     padding: 0.6rem 0;
     margin-bottom: 10px;
+}
+
+p mark {
+    background: #666;
+    color: #faf9f6;
+    padding: .09rem .3rem .09rem .3rem;
+    border-radius: 2px;
+    white-space: nowrap;
 }
 
 a {
@@ -102,27 +115,8 @@ hr {
     border-top: 1px solid rgba(120, 120, 120, 0.6);
 }
 
-img {
-    width: 100%;
-    max-width: 100%;
-    margin: 20px 0;
-    padding: 10px;
-}
-
-ol, ul {
-    padding-inline-start: 40px;
-}
-
-ul, ol > li {
-    margin-bottom: 10px;
-}
-
 .description {
     margin-bottom: 40px;
-}
-
-.item-list {
-    padding-inline-start: 0;
 }
 
 .item-list > li {
@@ -191,66 +185,15 @@ ul, ol > li {
     padding: 6px 10px;
 }
 
-.port-h2 {
-    margin-top: 40px;
-}
-
 footer {
     padding-top: 20px;
     padding-bottom: 5px;
-    font-size: small;
-    color: #737373;
-}
-
-.has-label {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-
-.image-label {
-    text-align: center;
-    opacity: 0.8;
-    font-size: 0.8rem;
-    padding-top: 5px;
-}
-
-.h3-small {
-
-}
-
-.color-card-container {
-    display: flex;
-    margin: 50px 0;
-    justify-content: space-around;
-}
-
-.card-border {
-    background-color: #e3e3e3;
-    border: 2px solid #737373;
-    border: none;
-    height: 250px;
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 20px 0 20px;
-    border-radius: 15px;
-}
-
-.color-card {
-    border: 2px solid #737373; 
-    border: none;
-    border-radius: 5px;
-    height: 100%; 
-    width: 100%;
-}
-
-.color-code {
-    margin: 10px 0;
+    font-size: 0.75em;
+    color: #8a8a8a;
 }
 
 .highlight .hll { background-color: #ffffcc }
-.highlight  { padding: 20px; border: solid 1px #ddd; border-radius: 5px; background: #ffffff; }
+.highlight  { padding: 20px; border: solid 1px #ddd; border-radius: 5px; background: #ffffff; overflow: scroll;}
 .highlight .c { color: #888888 }
 .highlight .err { color: #a61717; background-color: #e3d2d2 }
 .highlight .k { color: #008800; font-weight: bold }
@@ -331,21 +274,14 @@ footer {
     header {
         background-color: #000;
     }
-
-    footer {
-        color: #8f8f8f;
-    }
-
-    .card-border {
-        border: none;
-        background-color: #4c4c4c;
-    }
-    .color-card {
-        border: none;
+    
+    p mark {
+        background: #ddd;
+        color: #222830;
     }
     
     .highlight .hll { background-color: #404040 }
-    .highlight  { padding: 20px; border: solid 1px #444;  border-radius: 5px; background: #202020; color: #d0d0d0 }
+    .highlight  { padding: 20px; border: solid 1px #444;  border-radius: 5px; background: #202020; color: #d0d0d0; overflow: scroll; }
     .highlight .c { color: #999999; font-style: italic }
     .highlight .err { color: #a61717; background-color: #e3d2d2 }
     .highlight .esc { color: #d0d0d0 }
@@ -427,15 +363,6 @@ footer {
 @media(max-width: 600px) {
     .wrapper {
         padding: 40px 20px;
-    }
-
-    img {
-        padding: 0px;
-        margin: 10px 0px;
-    }
-
-    .card-border {
-        height: 150px;
     }
 }
 
