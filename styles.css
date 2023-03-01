@@ -26,7 +26,7 @@ body {
 }
 
 .wrapper {
-    max-width: 500px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     padding: 100px 40px 40px 40px;
@@ -66,6 +66,74 @@ nav li {
 nav li a.selected {
     text-decoration: underline;
 }
+
+.grid {
+    display: grid;
+}
+
+.grid-cols {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
+.gap-x {
+    column-gap: 1em;
+}
+
+.gap-y {
+    row-gap: 1.5em; 
+}
+
+.col-span-2 {
+    grid-column: span 2/span 2;
+}
+
+.project-img {
+    border: 1px solid #2228302e;
+    outline: 0px solid rgba(255, 248, 220, 0);
+    width: 100%;
+    border-radius: 0.25em; 
+    transition: all .2s ease-in-out;
+}
+
+.project-img:hover {
+    outline: 3px solid #2228302e;
+    /* transition-duration: .3s; */
+    /* transition-timing-function: cubic-bezier(.4,0,.2,1); */
+    /* filter: drop-shadow(0 0 0.75rem crimson); */
+    /* transform: scale(1.005); */
+}
+
+.project-desc {
+    opacity: 0.8;
+    /* text-decoration: none;
+    border-style: solid;
+    border-color: cornflowerblue;
+    border-width: 0 0 1px 0; */
+}
+
+.placeholder-img-wrapper {
+    border-radius: 0.125em;
+    background-color: #faf9f6;
+    width: 100%;
+    
+}
+
+
+.placeholder-img {
+    border-radius: 0.125em;
+    background-color: #faf9f6;
+    width: 100%;
+}
+
+.give-some-gap {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.project-title {
+    margin-top: 20px;
+}
+
 
 h1 {
     font-weight: normal;
@@ -278,6 +346,10 @@ footer {
     p mark {
         background: #ddd;
         color: #222830;
+    }
+
+    .project-img:hover {
+        outline: 3px solid rgba(255, 248, 220, 0.501);
     }
     
     .highlight .hll { background-color: #404040 }
