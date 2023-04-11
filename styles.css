@@ -120,6 +120,12 @@ nav li a.selected {
     border-width: 0 0 1px 0; */
 }
 
+.project-summary {
+    font-size: 0.8em;
+    opacity: 0.8;
+    line-height: 0.9;
+}
+
 .placeholder-img-wrapper {
     border-radius: 0.125em;
     background-color: #faf9f6;
@@ -399,7 +405,7 @@ footer {
     }
 
     .project-img:hover {
-        outline: 3px solid rgba(255, 248, 220, 0.501);
+        outline: 3px solid #909186;
     }
     
     .highlight .hll { background-color: #404040 }

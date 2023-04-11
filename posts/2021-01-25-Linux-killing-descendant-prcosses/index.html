@@ -1,4 +1,46 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="og:site_name" content="Vivek Selvaraj"/><link rel="canonical" href="https://vivek.dev/posts/2021-01-25-Linux-killing-descendant-prcosses"/><meta name="twitter:url" content="https://vivek.dev/posts/2021-01-25-Linux-killing-descendant-prcosses"/><meta name="og:url" content="https://vivek.dev/posts/2021-01-25-Linux-killing-descendant-prcosses"/><title>Killing all descendant processes in Linux | Vivek Selvaraj</title><meta name="twitter:title" content="Killing all descendant processes in Linux | Vivek Selvaraj"/><meta name="og:title" content="Killing all descendant processes in Linux | Vivek Selvaraj"/><meta name="description" content="How to kill a process and its entire process subtree with a shell script"/><meta name="twitter:description" content="How to kill a process and its entire process subtree with a shell script"/><meta name="og:description" content="How to kill a process and its entire process subtree with a shell script"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to Vivek Selvaraj"/></head><body class="item-page"><div class="wrapper"><article><h1>Killing all descendant processes in Linux</h1><p>by <a href="/">Vivek Selvaraj</a></p><hr/><div class="content"><h2><code>kill</code> command</h2><p>I want to force stop a process with its process ID. No big deal right? Just run the kill command as <code> kill -9 &lt;pid&gt;</code> to stop it. This works fine when this process has no subprocesses. In my case, the process can have some child processes. These child processes can have more and so on.</p><p>I couldn't kill these processes with the group ID, since my target process was spawned by another process. This made the target process to take up the root process's ID as it's group ID.</p><h2><code>pkill</code> command</h2><p>With some preliminary google search, <code>pkill</code> looked promising. It can kill the child processes of a process with the -P option <code>pkill -P &lt;ppid&gt;</code> (Where ppid is the parent process ID).</p><p>Just got to recursively call this on all the child processes. But how do I find the process IDs of the children? Luckily, from the man page of pkill, I found <code>pgrep</code> - it prints the process IDs.</p><p>Now it's just a matter of wiring them all into a bash script.</p><h2><code>killThemAll.sh</code></h2><pre><code><div class="highlight"><span></span><span class="ch">#!/bin/sh</span>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="og:site_name" content="Vivek Selvaraj" />
+  <link rel="canonical" href="https://vivek.dev/posts/2021-01-25-Linux-killing-descendant-prcosses" />
+  <meta name="twitter:url" content="https://vivek.dev/posts/2021-01-25-Linux-killing-descendant-prcosses" />
+  <meta name="og:url" content="https://vivek.dev/posts/2021-01-25-Linux-killing-descendant-prcosses" />
+  <title>Killing all descendant processes in Linux | Vivek Selvaraj</title>
+  <meta name="twitter:title" content="Killing all descendant processes in Linux | Vivek Selvaraj" />
+  <meta name="og:title" content="Killing all descendant processes in Linux | Vivek Selvaraj" />
+  <meta name="description" content="How to kill a process and its entire process subtree with a shell script" />
+  <meta name="twitter:description" content="How to kill a process and its entire process subtree with a shell script" />
+  <meta name="og:description" content="How to kill a process and its entire process subtree with a shell script" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="stylesheet" href="/styles.css" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/png" />
+  <link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to Vivek Selvaraj" />
+</head>
+
+<body class="item-page">
+  <div class="wrapper">
+    <article>
+      <h1>Killing all descendant processes in Linux</h1>
+      <p>by <a href="/">Vivek Selvaraj</a></p>
+      <hr />
+      <div class="content">
+        <h2><code>kill</code> command</h2>
+        <p>I want to force stop a process with its process ID. No big deal right? Just run the kill command as
+          <code> kill -9 &lt;pid&gt;</code> to stop it. This works fine when this process has no subprocesses. In my
+          case, the process can have some child processes. These child processes can have more and so on.</p>
+        <p>I couldn't kill these processes with the group ID, since my target process was spawned by another process.
+          This made the target process to take up the root process's ID as it's group ID.</p>
+        <h2><code>pkill</code> command</h2>
+        <p>With some preliminary google search, <code>pkill</code> looked promising. It can kill the child processes of
+          a process with the -P option <code>pkill -P &lt;ppid&gt;</code> (Where ppid is the parent process ID).</p>
+        <p>Just got to recursively call this on all the child processes. But how do I find the process IDs of the
+          children? Luckily, from the man page of pkill, I found <code>pgrep</code> - it prints the process IDs.</p>
+        <p>Now it's just a matter of wiring them all into a bash script.</p>
+        <h2><code>killThemAll.sh</code></h2>
+        <pre><code><div class="highlight"><span></span><span class="ch">#!/bin/sh</span>
 
 <span class="c1"># Check if arguments are present</span>
 <span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
@@ -30,4 +72,13 @@ findChildProcesses<span class="o">()</span>
 
 <span class="c1"># Command to kill all the processes listed by the above function</span>
 <span class="nb">kill</span> -9 <span class="nv">$1</span> <span class="sb">`</span>findChildProcesses <span class="nv">$1</span><span class="sb">`</span>
-</div></code></pre></div></article></div><footer><p>Handcrafted in Ann Arbor<br/><a href="/feed.rss">RSS feed</a></p></footer></body></html>
+</div></code></pre>
+      </div>
+    </article>
+  </div>
+  <footer>
+    <p>Handcrafted in Ann Arbor<br /><a href="/feed.rss">RSS feed</a></p>
+  </footer>
+</body>
+
+</html>
