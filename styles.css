@@ -33,6 +33,18 @@ body {
     text-align: left;
 }
 
+.callout {
+    border: 2px solid gray;
+    background-color: rgba(128, 128, 128, 0.2);
+    padding: 20px;
+    margin: 20px 0px;
+    border-radius: 0.3em;
+}
+
+.callout li {
+    margin-inline-start: 20px;
+}
+
 header {
     background-color: #eee;
 }
@@ -65,6 +77,11 @@ nav li {
 
 nav li a.selected {
     text-decoration: underline;
+}
+
+.no-underline {
+    text-decoration: none;
+    border: 0;
 }
 
 figcaption {
