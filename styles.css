@@ -67,6 +67,13 @@ nav li a.selected {
     text-decoration: underline;
 }
 
+figcaption {
+    font-size: smaller;
+    opacity: 0.8;
+    font-style: italic;
+    line-height: 1.2;
+}
+
 .grid {
     display: grid;
 }
@@ -95,6 +102,29 @@ nav li a.selected {
     transition: all .2s ease-in-out;
 }
 
+.media-article {
+    width: 100%;
+    border-radius: 0.25em;
+}
+
+.overlay-container {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.video-underlay {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.image-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 .cover-img {
     border: 1px solid #2228302e;
     margin-top: 2em;
@@ -102,6 +132,10 @@ nav li a.selected {
     width: 100%;
     border-radius: 0.25em; 
     transition: all .2s ease-in-out;
+}
+
+.hover-opacity {
+    opacity: 0.7;
 }
 
 .project-img:hover {
@@ -199,7 +233,7 @@ h1 {
 
 h2 {
     font-weight: normal;
-    margin: 20px 0;
+    margin: 40px 0 20px 0;
 }
 
 h3 {
@@ -212,12 +246,30 @@ p {
     margin-bottom: 10px;
 }
 
-p mark {
+mark {
     background: #666;
     color: #faf9f6;
     padding: .09rem .3rem .09rem .3rem;
     border-radius: 2px;
     white-space: nowrap;
+}
+
+article mark {
+    background: rgba(100, 148, 237, 0.8);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 a {
@@ -399,7 +451,7 @@ footer {
         background-color: #000;
     }
     
-    p mark {
+    mark {
         background: #ddd;
         color: #222830;
     }
