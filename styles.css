@@ -25,6 +25,14 @@ body {
     line-height: 1.5em;
 }
 
+.alert {
+    padding: 20px;
+    background: lightgray;
+    color: black;
+    border-radius: 10px;
+}
+
+
 .wrapper {
     max-width: 600px;
     margin-left: auto;
