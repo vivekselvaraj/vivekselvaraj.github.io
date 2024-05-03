@@ -253,15 +253,20 @@ strong {
 .project-details {
     display: flex;
     flex-flow: row wrap;
+}
 
-    & table {
-        flex: 1;
-        margin: 0.5em 0.2em;
+.project-details table {
+    flex: 1;
+    margin: 0.5em 0.2em;
+}
 
-        ul {
-            list-style: none;
-        }
-    }
+.project-details table ul {
+    list-style: none;
+}
+
+.figma-prototype {
+    width: 100%;
+    aspect-ratio: 9/13;
 }
 
 table {
